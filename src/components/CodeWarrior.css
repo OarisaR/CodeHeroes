@@ -1,0 +1,310 @@
+/* Main Section */
+.code-warrior-section {
+    background: linear-gradient(
+        to bottom,
+        rgb(67, 96, 145) 0%,
+        rgba(55, 80, 125, 0.95) 100%
+    );
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+/* Container Layout */
+.code-warrior-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6rem;
+    position: relative;
+    padding: 0 2rem;
+}
+
+/* Background Symbols */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.code-symbol {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.1);
+    font-family: monospace;
+    animation: float-symbol 10s ease-in-out infinite;
+}
+
+/* More varied symbols with different sizes and positions */
+.code-symbol:nth-child(1) { 
+    content: '</>';
+    font-size: 4rem;
+    top: 10%; 
+    left: 5%; 
+    animation-delay: 0s; 
+}
+.code-symbol:nth-child(2) { 
+    content: '{ }';
+    font-size: 5rem;
+    top: 0; 
+    right: 10%; 
+    animation-delay: -2s; 
+}
+.code-symbol:nth-child(3) { 
+    content: '#';
+    font-size: 5rem;
+    bottom: 15%; 
+    left: 15%; 
+    animation-delay: -4s; 
+}
+.code-symbol:nth-child(4) { 
+    content: '( )';
+    font-size: 3rem;
+    bottom: 25%; 
+    right: 15%; 
+    animation-delay: -6s; 
+}
+/* Additional symbols */
+.code-symbol:nth-child(5) { 
+    content: '[ ]';
+    font-size: 3.2rem;
+    top: 40%; 
+    left: 2%; 
+    animation-delay: -3s; 
+}
+/* Warrior Image */
+.warrior-wrapper {
+    flex-shrink: 0;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -2rem;
+}
+
+.warrior-image {
+    width: 200%;
+    height: auto;
+    margin-top: -120px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    animation: floatWarrior 6s ease-in-out infinite;
+    transform-origin: bottom;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    flex-grow: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: -2rem;
+}
+
+/* Quote Bubble */
+.quote-bubble {
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    width: 120%;
+    animation: fadeInRight 1s ease-out;
+}
+
+.quote-bubble::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 20px 20px 20px 0;
+    border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
+}
+
+.quote-text {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quote-author {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: right;
+    font-style: italic;
+}
+
+/* Stats Section */
+.warrior-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    max-width: 150px;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #60A5FA, #818CF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.5rem;
+}
+
+/* CTA Button */
+.warrior-cta {
+    background: linear-gradient(135deg, #60A5FA, #818CF8);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+}
+
+.warrior-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+.warrior-cta:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Animations */
+@keyframes floatWarrior {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(1deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes float-symbol {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1); 
+    }
+    50% { 
+        transform: translate(10px, -10px) rotate(5deg) scale(1.05); 
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .code-warrior-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+        padding: 0;
+    }
+
+    .warrior-wrapper {
+        width: 200px;
+        margin-top: 0;
+    }
+
+    .content-wrapper {
+        margin-top: 0;
+        align-items: center;
+    }
+
+    .quote-bubble {
+        padding: 2rem;
+        width: 100%;
+    }
+
+    .quote-bubble::before {
+        left: 50%;
+        top: -20px;
+        transform: translateX(-50%) rotate(90deg);
+    }
+
+    .warrior-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .warrior-cta {
+        align-self: center;
+    }
+
+    .code-symbol {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .code-warrior-section {
+        padding: 4rem 1rem;
+    }
+
+    .warrior-image {
+        width: 150px;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+
+    .warrior-wrapper {
+        width: 150px;
+    }
+}

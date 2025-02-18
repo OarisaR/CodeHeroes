@@ -1,0 +1,248 @@
+{
+  "array": {
+    "title": "Array Data Structure",
+    "introduction": "Arrays are linear data structures used to store elements of the same type in contiguous memory locations. They provide constant-time access to elements using indices.",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the time complexity of accessing an element in an array?",
+        "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+        "correctAnswer": "O(1)",
+        "explanation": "Array access is constant time because elements are stored in contiguous memory locations."
+      },
+      {
+        "id": 2,
+        "question": "Which of the following operations takes O(n) time in an unsorted array?",
+        "options": ["Accessing an element", "Searching for an element", "Inserting at the end", "Sorting"],
+        "correctAnswer": "Searching for an element",
+        "explanation": "In an unsorted array, searching requires checking each element, leading to O(n) complexity."
+      },
+      {
+        "id": 3,
+        "question": "What is the time complexity of appending an element to an unsorted array?",
+        "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+        "correctAnswer": "O(1)",
+        "explanation": "Inserting an element at the end of an unsorted array is done in constant time if there is space."
+      },
+      {
+        "id": 4,
+        "question": "What is the space complexity of storing an array of n elements?",
+        "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+        "correctAnswer": "O(n)",
+        "explanation": "An array stores each element in a contiguous block of memory, so the space complexity is O(n)."
+      },
+      {
+        "id": 5,
+        "question": "What happens when you try to access an index out of bounds in an array?",
+        "options": ["It will return null", "It will throw an error", "It will return a random value", "It will be ignored"],
+        "correctAnswer": "It will throw an error",
+        "explanation": "Accessing an out-of-bounds index in most languages results in an error because the index is not valid."
+      },
+      {
+        "id": 6,
+        "question": "Which of the following is NOT a disadvantage of arrays?",
+        "options": ["Fixed size", "Contiguous memory allocation", "Efficient random access", "Inserting/deleting elements can be costly"],
+        "correctAnswer": "Efficient random access",
+        "explanation": "Efficient random access is an advantage of arrays, not a disadvantage."
+      },
+      {
+        "id": 7,
+        "question": "In which scenario would an array be the most efficient data structure?",
+        "options": ["When you need to search for an element quickly", "When you need dynamic resizing", "When you need constant-time access to elements", "When you need to delete elements frequently"],
+        "correctAnswer": "When you need constant-time access to elements",
+        "explanation": "Arrays provide constant-time access to elements using indices, making them ideal for fast lookups."
+      },
+      {
+        "id": 8,
+        "question": "Which of the following operations has O(n) time complexity in a sorted array?",
+        "options": ["Searching for an element", "Inserting at the beginning", "Appending an element", "Accessing an element"],
+        "correctAnswer": "Inserting at the beginning",
+        "explanation": "Inserting at the beginning of a sorted array requires shifting all elements, leading to O(n) complexity."
+      },
+      {
+        "id": 9,
+        "question": "Which type of array is the best choice when you need to perform fast random access, but the array size is fixed?",
+        "options": ["Dynamic Array", "Linked List", "Static Array", "Hash Table"],
+        "correctAnswer": "Static Array",
+        "explanation": "A static array provides the fastest random access, but its size is fixed, making it suitable for known, fixed-sized data."
+      },
+      {
+        "id": 10,
+        "question": "Which of the following is a limitation of arrays compared to other data structures?",
+        "options": ["Fixed size", "Lack of support for dynamic resizing", "Inefficient random access", "Cannot store multiple data types"],
+        "correctAnswer": "Fixed size",
+        "explanation": "Arrays have a fixed size once declared, unlike other data structures like lists or vectors that can dynamically resize."
+      }
+    ]
+  },
+
+  
+    "linkedList": {
+      "title": "Linked List Data Structure",
+      "introduction": "A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node in the sequence.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the time complexity of inserting at the beginning of a linked list?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+          "correctAnswer": "O(1)",
+          "explanation": "We only need to update the head pointer and the next pointer of the new node."
+        },
+        {
+          "id": 2,
+          "question": "What is the time complexity of accessing an element by index in a linked list?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+          "correctAnswer": "O(n)",
+          "explanation": "In a linked list, we need to traverse the list from the head node, resulting in linear time complexity."
+        },
+        {
+          "id": 3,
+          "question": "What is the time complexity of deleting the last element in a singly linked list?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+          "correctAnswer": "O(n)",
+          "explanation": "In a singly linked list, we need to traverse the list to find the second-to-last element to update its pointer."
+        },
+        {
+          "id": 4,
+          "question": "Which of the following is a disadvantage of a singly linked list?",
+          "options": ["Efficient random access", "Inefficient insertions", "Inefficient deletions", "Requires extra memory for pointers"],
+          "correctAnswer": "Requires extra memory for pointers",
+          "explanation": "Each node in a linked list requires extra memory for storing a pointer to the next node."
+        },
+        {
+          "id": 5,
+          "question": "Which type of linked list allows traversal in both directions?",
+          "options": ["Singly Linked List", "Doubly Linked List", "Circular Linked List", "Unrolled Linked List"],
+          "correctAnswer": "Doubly Linked List",
+          "explanation": "A doubly linked list has pointers to both the previous and next nodes, allowing traversal in both directions."
+        },
+        {
+          "id": 6,
+          "question": "What is the time complexity of inserting an element at the end of a singly linked list (without a tail pointer)?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+          "correctAnswer": "O(n)",
+          "explanation": "Without a tail pointer, we must traverse the entire list to reach the last element, resulting in O(n) time complexity."
+        },
+        {
+          "id": 7,
+          "question": "What is the time complexity of deleting the first element in a linked list?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+          "correctAnswer": "O(1)",
+          "explanation": "In a linked list, deleting the first element only requires updating the head pointer, which takes constant time."
+        },
+        {
+          "id": 8,
+          "question": "In which scenario is a linked list more efficient than an array?",
+          "options": ["When you need random access to elements", "When you need dynamic resizing", "When you need fast search operations", "When you need efficient insertions and deletions"],
+          "correctAnswer": "When you need efficient insertions and deletions",
+          "explanation": "Linked lists are efficient for insertions and deletions, as you can easily update pointers without shifting elements, unlike arrays."
+        },
+        {
+          "id": 9,
+          "question": "What is the space complexity of a singly linked list that stores n elements?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+          "correctAnswer": "O(n)",
+          "explanation": "A singly linked list stores one pointer per node in addition to the data, so the space complexity is O(n)."
+        },
+        {
+          "id": 10,
+          "question": "What is the time complexity of reversing a singly linked list?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+          "correctAnswer": "O(n)",
+          "explanation": "Reversing a singly linked list requires iterating through the list once to reverse the pointers, resulting in O(n) time complexity."
+        }
+      ]
+    },  
+    "tree": {
+      "title": "Tree Data Structure",
+      "introduction": "A tree is a hierarchical data structure consisting of nodes, where each node has a parent and potentially multiple children.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the time complexity of searching in a balanced binary search tree (BST)?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+          "correctAnswer": "O(log n)",
+          "explanation": "A balanced BST ensures logarithmic search time by maintaining height balance."
+        }
+      ]
+    },
+    "graph": {
+      "title": "Graph Data Structure",
+      "introduction": "A graph is a collection of nodes (vertices) and edges that connect pairs of nodes, used to represent relationships between objects.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the time complexity of BFS (Breadth-First Search) in an adjacency list representation?",
+          "options": ["O(V+E)", "O(V^2)", "O(log V)", "O(E log V)"],
+          "correctAnswer": "O(V+E)",
+          "explanation": "BFS visits each vertex and edge once, leading to O(V+E) complexity."
+        }
+      ]
+    },
+    "sorting": {
+      "title": "Sorting Algorithms",
+      "introduction": "Sorting algorithms arrange elements in a specific order, typically ascending or descending, to enable efficient searching and retrieval.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which sorting algorithm has the best average-case time complexity?",
+          "options": ["Quick Sort", "Merge Sort", "Bubble Sort", "Insertion Sort"],
+          "correctAnswer": "Merge Sort",
+          "explanation": "Merge Sort consistently provides O(n log n) time complexity in the average case."
+        }
+      ]
+    },
+    "stack": {
+      "title": "Stack Data Structure",
+      "introduction": "A stack is a linear data structure that follows the LIFO (Last In, First Out) principle, allowing insertion and deletion from one end.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the time complexity of push and pop operations in a stack?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+          "correctAnswer": "O(1)",
+          "explanation": "Push and pop operations take constant time in a stack."
+        }
+      ]
+    },
+    "queue": {
+      "title": "Queue Data Structure",
+      "introduction": "A queue is a linear data structure that follows the FIFO (First In, First Out) principle, allowing insertion at one end and deletion at the other.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which type of queue allows insertion and deletion from both ends?",
+          "options": ["Simple Queue", "Circular Queue", "Deque", "Priority Queue"],
+          "correctAnswer": "Deque",
+          "explanation": "A deque (double-ended queue) allows insertion and deletion from both ends."
+        }
+      ]
+    },
+    "hashing": {
+      "title": "Hashing",
+      "introduction": "Hashing is a technique used to map data to fixed-size values using hash functions, enabling efficient lookup and retrieval.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the average time complexity of search, insert, and delete operations in a hash table?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+          "correctAnswer": "O(1)",
+          "explanation": "Hash tables provide constant-time operations on average with good hash functions."
+        }
+      ]
+    },
+    "heap": {
+      "title": "Heap Data Structure",
+      "introduction": "A heap is a complete binary tree-based data structure used for implementing priority queues.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the time complexity of inserting an element in a binary heap?",
+          "options": ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+          "correctAnswer": "O(log n)",
+          "explanation": "Insertion in a binary heap requires upheap operations, leading to O(log n) complexity."
+        }
+      ]
+    }
+  }
+  

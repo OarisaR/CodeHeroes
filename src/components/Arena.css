@@ -1,0 +1,501 @@
+.arena-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    #0b2555 0%,
+    rgba(14, 1, 37, 0.98) 70%,
+    rgba(27, 38, 59, 0.95) 100%
+  );
+  margin-top: -70px;
+  padding-top: 100px;
+}
+
+.arena-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.arena-header h1 {
+  font-size: 3rem;
+  color: #fff;
+  background: linear-gradient(135deg, #60A5FA, #818CF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.battle-timer {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #60A5FA;
+}
+
+.timer-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.battle-ground {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+}
+
+.players-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.player-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.player-card.answered {
+  border-color: #60A5FA;
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+}
+
+.player-avatar {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.player-info {
+  flex: 1;
+}
+
+.player-name {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.player-stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.player-score {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.streak-badge {
+  background: linear-gradient(135deg, #60A5FA, #818CF8);
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.battle-arena {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.question-container {
+  margin-bottom: 2rem;
+}
+
+.question-text {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.option-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-button:hover {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: #60A5FA;
+  transform: translateY(-2px);
+}
+
+.battle-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.battle-controls {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.control-btn {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-btn:first-child {
+  background: linear-gradient(135deg, #60A5FA, #818CF8);
+  color: #fff;
+  border: none;
+}
+
+.control-btn:last-child {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(96, 165, 250, 0.2);
+}
+
+.control-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 968px) {
+  .battle-ground {
+    grid-template-columns: 1fr;
+  }
+
+  .players-container {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+
+  .player-card {
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .arena-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Keep existing base styles and add/modify the following */
+
+/* Add pulsing effect to battle timer */
+.battle-timer {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    position: relative;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(96, 165, 250, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
+  }
+  
+  /* Add battle status banner */
+  .battle-status {
+    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+    padding: 0.5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  /* Enhance player cards */
+  .player-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .player-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .player-card:hover::before {
+    left: 100%;
+  }
+  
+  /* Add rank indicator */
+  .player-rank {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: linear-gradient(135deg, #60A5FA, #818CF8);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Enhance battle arena */
+  .battle-arena {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .battle-arena::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #60A5FA, transparent);
+  }
+  
+  /* Add floating code symbols */
+  .battle-arena::after {
+    content: '</>';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: rgba(96, 165, 250, 0.1);
+    font-size: 1.5rem;
+    font-family: monospace;
+  }
+  
+  /* Enhance option buttons */
+  .option-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .option-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #60A5FA, #818CF8);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .option-button:hover::before {
+    opacity: 0.1;
+  }
+  
+  /* Add battle progress bar */
+  .battle-progress {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  
+  .proress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #60A5FA, #818CF8);
+    width: 20%; /* Adjust based on battle progress */
+    transition: width 0.3s ease;
+  }
+  
+  /* Add versus symbol between players */
+  .versus {
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #60A5FA, #818CF8);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+  }
+  
+  /* Add power-up indicators */
+  .power-ups {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .power-up {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Add battle stats badges */
+  .staty-badge {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(96, 165, 250, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #60A5FA;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+  }
+  
+  /* Enhance control buttons */
+  .control-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .control-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.5s;
+  }
+  
+  .control-btn:hover::after {
+    transform: rotate(45deg) translate(50%, 50%);
+  }
+  
+  /* Add battle mode indicator */
+  .battle-mode {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #60A5FA;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+  }
+  
+  /* Keep existing media queries and add: */
+  @media (max-width: 768px) {
+    .versus {
+      display: none;
+    }
+    
+    .battle-mode {
+      position: static;
+      margin-bottom: 1rem;
+    }
+  }
+  

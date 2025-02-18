@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/CodeHeroes/static/css/main.bc137a79.css",
+    "main.js": "/CodeHeroes/static/js/main.83eeff2f.js",
+    "static/media/l2.png": "/CodeHeroes/static/media/l2.0d11f7e5de9c78e95d85.png",
+    "static/media/l8.png": "/CodeHeroes/static/media/l8.cc88592af8d4f8739064.png",
+    "static/media/l3.jpg": "/CodeHeroes/static/media/l3.54b40cd737102e1051ec.jpg",
+    "static/media/home.jpeg": "/CodeHeroes/static/media/home.d15c8a02d27ee1230304.jpeg",
+    "static/media/l4.jpg": "/CodeHeroes/static/media/l4.2b8ccb6920bfe264fdad.jpg",
+    "static/media/img1.jpg": "/CodeHeroes/static/media/img1.927f4e3252914c1113d6.jpg",
+    "static/media/codewarrior.png": "/CodeHeroes/static/media/codewarrior.7e21a45cf3929a04634d.png",
+    "static/media/l5.jpg": "/CodeHeroes/static/media/l5.ca76fae75c8a3df4b26c.jpg",
+    "static/media/l1.jpg": "/CodeHeroes/static/media/l1.ca3068dc7b41e86e4b18.jpg",
+    "static/media/l6.jpg": "/CodeHeroes/static/media/l6.5f098f11cc580e54e690.jpg",
+    "static/media/cover1.jpg": "/CodeHeroes/static/media/cover1.f1c521dea870a06162e9.jpg",
+    "static/media/swords.png": "/CodeHeroes/static/media/swords.007d53e192102d9b3460.png",
+    "static/media/knight.png": "/CodeHeroes/static/media/knight.f33b8a7ba94c454f41d0.png",
+    "static/media/logo-design.png": "/CodeHeroes/static/media/logo-design.6be57bc4d98f6e697232.png",
+    "static/media/encrypted.png": "/CodeHeroes/static/media/encrypted.1fc2981c67e7814af39c.png",
+    "static/media/logo (1).png": "/CodeHeroes/static/media/logo (1).70af4b12c655cc67c1cc.png",
+    "static/media/sword.png": "/CodeHeroes/static/media/sword.092870340570fedc15ac.png",
+    "index.html": "/CodeHeroes/index.html",
+    "main.bc137a79.css.map": "/CodeHeroes/static/css/main.bc137a79.css.map",
+    "main.83eeff2f.js.map": "/CodeHeroes/static/js/main.83eeff2f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc137a79.css",
+    "static/js/main.83eeff2f.js"
+  ]
+}
