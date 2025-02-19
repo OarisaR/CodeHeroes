@@ -1,6 +1,9 @@
+/* Container and 3D Grid Background */
 .arena-container {
   min-height: 100vh;
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(
     135deg,
     #0b2555 0%,
@@ -11,6 +14,30 @@
   padding-top: 100px;
 }
 
+.arena-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, rgba(96, 165, 250, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(96, 165, 250, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(1000px) rotateX(60deg);
+  transform-origin: center top;
+  animation: gridMove 20s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 40px 1000px; }
+}
+
+/* Header and Title */
 .arena-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -18,44 +45,114 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 2;
 }
-
 .arena-header h1 {
-  font-size: 3rem;
+  font-size: 2.7rem;
   color: #fff;
+  margin-bottom: 0.8rem;
   background: linear-gradient(135deg, #60A5FA, #818CF8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 5px 15px rgba(96, 165, 250, 0.3);
+  letter-spacing: -1px;
 }
 
+.battle-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  position: relative;
+  text-shadow: 
+    0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+  background: linear-gradient(135deg, #60A5FA, #818CF8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.3)); }
+  to { filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.6)); }
+}
+
+/* Timer */
 .battle-timer {
   background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1.5rem;
+  padding: 0.8rem 2rem;
   border-radius: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 2px solid rgba(96, 165, 250, 0.3);
+  position: relative;
+  animation: pulse 2s infinite;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 0 20px rgba(96, 165, 250, 0.2),
+    inset 0 0 20px rgba(96, 165, 250, 0.1);
 }
 
 .timer-value {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #60A5FA;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
 }
 
 .timer-label {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(96, 165, 250, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
+}
+
+/* Battle Ground and Arena */
 .battle-ground {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
+.battle-arena {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+/* Players Section */
 .players-container {
   display: flex;
   flex-direction: column;
@@ -66,17 +163,18 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.player-card.answered {
-  border-color: #60A5FA;
-  box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+.player-card:hover {
+  transform: translateY(-5px) scale(1.02);
 }
 
 .player-avatar {
@@ -98,6 +196,7 @@
   color: #fff;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .player-stats {
@@ -111,22 +210,7 @@
   font-size: 0.9rem;
 }
 
-.streak-badge {
-  background: linear-gradient(135deg, #60A5FA, #818CF8);
-  padding: 0.2rem 0.5rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  color: #fff;
-}
-
-.battle-arena {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
+/* Question Section */
 .question-container {
   margin-bottom: 2rem;
 }
@@ -136,12 +220,15 @@
   font-size: 1.5rem;
   margin-bottom: 2rem;
   line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .options-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  position: relative;
+  z-index: 3;
 }
 
 .option-button {
@@ -153,46 +240,27 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
 .option-button:hover {
   background: rgba(96, 165, 250, 0.2);
   border-color: #60A5FA;
   transform: translateY(-2px);
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 0 15px rgba(96, 165, 250, 0.2);
 }
 
-.battle-stats {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.stat-label {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-}
-
-.stat-value {
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
+/* Battle Controls */
 .battle-controls {
   max-width: 1200px;
   margin: 2rem auto 0;
   display: flex;
   justify-content: center;
   gap: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .control-btn {
@@ -202,6 +270,8 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .control-btn:first-child {
@@ -227,6 +297,22 @@
   transform: none;
 }
 
+/* Winner Declaration */
+.winner-declaration {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideDown 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive Design */
 @media (max-width: 968px) {
   .battle-ground {
     grid-template-columns: 1fr;
@@ -244,258 +330,170 @@
 }
 
 @media (max-width: 768px) {
-  .arena-header h1 {
+  .battle-title {
     font-size: 2.5rem;
   }
 
   .options-grid {
     grid-template-columns: 1fr;
   }
-}
-/* Keep existing base styles and add/modify the following */
 
-/* Add pulsing effect to battle timer */
-.battle-timer {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid rgba(96, 165, 250, 0.3);
-    position: relative;
-    animation: pulse 2s infinite;
+  .arena-container::before {
+    background-size: 100% 100%, 20px 20px, 20px 20px;
   }
-  
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(96, 165, 250, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
-  }
-  
-  /* Add battle status banner */
-  .battle-status {
-    background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
-    padding: 0.5rem;
-    text-align: center;
-    color: #fff;
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  
-  /* Enhance player cards */
-  .player-card {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .player-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
-    transition: 0.5s;
-  }
-  
-  .player-card:hover::before {
-    left: 100%;
-  }
-  
-  /* Add rank indicator */
-  .player-rank {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: linear-gradient(135deg, #60A5FA, #818CF8);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Enhance battle arena */
-  .battle-arena {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .battle-arena::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #60A5FA, transparent);
-  }
-  
-  /* Add floating code symbols */
-  .battle-arena::after {
-    content: '</>';
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    color: rgba(96, 165, 250, 0.1);
-    font-size: 1.5rem;
-    font-family: monospace;
-  }
-  
-  /* Enhance option buttons */
-  .option-button {
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-  
-  .option-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #60A5FA, #818CF8);
+}
+/* Winner Declaration Styles */
+.winner-declaration {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideDown 0.5s ease;
+}
+
+.trophy-animation {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: trophyBounce 1s ease infinite;
+}
+
+@keyframes trophyBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.winner-title {
+  font-size: 3rem;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.winner-card {
+  background: rgba(255, 215, 0, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.4); }
+  100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+}
+
+.winner-avatar {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.winner-details h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.winner-score {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+}
+
+.battle-summary {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.battle-summary h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.players-summary {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.player-summary-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 15px;
+  min-width: 250px;
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.summary-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.post-battle-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.rematch-btn {
+  background: linear-gradient(135deg, #60A5FA, #818CF8);
+  color: white;
+  border: none;
+}
+
+.share-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+@keyframes slideDown {
+  from {
     opacity: 0;
-    z-index: -1;
-    transition: opacity 0.3s ease;
+    transform: translateY(-20px);
   }
-  
-  .option-button:hover::before {
-    opacity: 0.1;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Add battle progress bar */
-  .battle-progress {
-    width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-    margin-bottom: 2rem;
-    overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .players-summary {
+    flex-direction: column;
   }
-  
-  .proress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #60A5FA, #818CF8);
-    width: 20%; /* Adjust based on battle progress */
-    transition: width 0.3s ease;
+
+  .winner-title {
+    font-size: 2rem;
   }
-  
-  /* Add versus symbol between players */
-  .versus {
-    position: absolute;
-    top: 50%;
-    left: -15px;
-    transform: translateY(-50%);
-    background: linear-gradient(135deg, #60A5FA, #818CF8);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bold;
-    z-index: 2;
+
+  .trophy-animation {
+    font-size: 4rem;
   }
-  
-  /* Add power-up indicators */
-  .power-ups {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-  
-  .power-up {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Add battle stats badges */
-  .staty-badge {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    background: rgba(96, 165, 250, 0.1);
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    color: #60A5FA;
-    border: 1px solid rgba(96, 165, 250, 0.2);
-  }
-  
-  /* Enhance control buttons */
-  .control-btn {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .control-btn::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
-    transform: rotate(45deg);
-    transition: 0.5s;
-  }
-  
-  .control-btn:hover::after {
-    transform: rotate(45deg) translate(50%, 50%);
-  }
-  
-  /* Add battle mode indicator */
-  .battle-mode {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    color: #60A5FA;
-    border: 1px solid rgba(96, 165, 250, 0.2);
-  }
-  
-  /* Keep existing media queries and add: */
-  @media (max-width: 768px) {
-    .versus {
-      display: none;
-    }
-    
-    .battle-mode {
-      position: static;
-      margin-bottom: 1rem;
-    }
-  }
-  
+}
